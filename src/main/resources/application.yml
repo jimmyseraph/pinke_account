@@ -1,0 +1,29 @@
+server:
+  port: 10002
+
+spring:
+  application:
+    name: pinke-account-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/pinke_api?serverTimezone=GMT&useSSL=false&characterEncoding=utf8
+    username: root
+    password:
+    type: com.alibaba.druid.pool.DruidDataSource
+    filters: stat
+    maxActive: 20
+    initialSize: 5
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    validationQuery: select 1
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10001/eureka/
