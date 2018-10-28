@@ -7,7 +7,7 @@ public class AccessTokenDTO {
     private String privateKey;
     private String token;
     private int userId;
-    private Date expireTime;
+    private Date expiredTime;
 
     public int getTokenId() {
         return tokenId;
@@ -41,11 +41,11 @@ public class AccessTokenDTO {
         this.userId = userId;
     }
 
-    public Date getExpireTime() {
-        return expireTime;
+    public Date getExpiredTime() {
+        return expiredTime;
     }
 
-    public void setExpireTime(Date expireTime) {
-        this.expireTime = expireTime;
+    public void setExpiredTime(Date expiredTime) {
+        this.expiredTime = expiredTime;
     }
 }

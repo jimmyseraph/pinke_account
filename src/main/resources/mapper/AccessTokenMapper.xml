@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pinke.liudao.pinke_account.daos.AccessTokenDAO">
+    <resultMap id="accessTokenMap" type="com.pinke.liudao.pinke_account.entities.AccessTokenDTO" >
+        <id column="token_id" property="tokenId" />
+        <result column="private_key" property="privateKey" />
+        <result column="token" property="token" />
+        <result column="user_id" property="userId" />
+        <result column="expired" property="expiredTime" />
+    </resultMap>
+    <insert id="insertToken" parameterType="com.pinke.liudao.pinke_account.entities.AccessTokenDTO">
+        insert into access_token
+        values(null, #{privateKey}, #{token}, #{userId}, #{expiredTime})
+    </insert>
+    <update id="modifyToekn" parameterType="com.pinke.liudao.pinke_account.entities.AccessTokenDTO">
+        update access_token
+        set private_key = #{privateKey}, token = #{token}, user_id = #{userId}, expired = #{expiredTime}
+        where token_id = #{tokenId}
+    </update>
+    <select id="getAccessTokenByToken" parameterType="string" resultMap="accessTokenMap" >
+        select * from access_token where token = #{token}
+    </select>
+    <select id="getAccessTokenByUserId" parameterType="int" resultMap="accessTokenMap">
+        select * from access_token where user_id = #{userId}
+    </select>
+</mapper>

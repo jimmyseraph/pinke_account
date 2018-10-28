@@ -102,3 +102,50 @@ xxxx
 
 xxxx
 
+## 3. Check Token API
+
+### 3.1 Path
+
+> /account/check_token<br />
+
+### 3.2 Method
+
+> GET
+
+### 3.3 Headers
+
+> none
+
+### 3.4 Cookies
+
+> none
+
+### 3.5 Parameters detail
+
+> Form-data:
+
+| Param Name | Type   | Location    | mandatory | memo |
+| ---------- | ------ | ----------- | --------- | ---- |
+| token      | string | queryString | true      |      |
+
+### 3.6 Return
+
+> JSON:<br />
+
+```json
+{
+    "retCode": xxxx,
+    "retMsg": "xxxx",
+    "data": null
+}
+```
+
+> retCode: retMsg
+>
+> - 10000: Token is valid
+> - 20009: Token is invalid
+> - 20010: Token is out of date
+
+### 3.7 Example
+
+xxxx

@@ -103,13 +103,21 @@ public class AccountAction {
             AccessTokenResponseEntity accessTokenResponseEntity = new AccessTokenResponseEntity();
             AccessTokenDTO accessTokenDTO = accountService.doRegisterToken(username);
             accessTokenResponseEntity.setToken(accessTokenDTO.getToken());
-            accessTokenResponseEntity.setExpiredTime(accessTokenDTO.getExpireTime());
+            accessTokenResponseEntity.setExpiredTime(accessTokenDTO.getExpiredTime());
             accountResponseEntity.setData(accessTokenResponseEntity);
         }else {
             accountResponseEntity.setRetCode(20008);
             accountResponseEntity.setRetMsg("username or password is invalid");
             System.err.println("error --> username or password is invalid");
         }
+        return accountResponseEntity;
+    }
+
+    @RequestMapping(value = "/check_token", method = RequestMethod.GET)
+    @ResponseBody
+    public AccountResponseEntity checkToken(@RequestParam("token") String token){
+        AccountResponseEntity accountResponseEntity = new AccountResponseEntity();
+        accountService.doCheckToken(token,accountResponseEntity);
         return accountResponseEntity;
     }
 }
